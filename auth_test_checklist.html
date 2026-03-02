@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Test Checklist</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 12px;
+            margin: 8px 0;
+            background: #ecf0f1;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .checklist li:hover {
+            background: #d5dbdb;
+        }
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .ready { background: #2ecc71; color: white; }
+        .pending { background: #f39c12; color: white; }
+        .link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .link:hover {
+            text-decoration: underline;
+        }
+        .critical {
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .success {
+            background: #2ecc71;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        .btn-success {
+            background: #2ecc71;
+        }
+        .btn-success:hover {
+            background: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Authentication System - Test Checklist</h1>
+        
+        <div class="success">
+            <strong>✅ Status:</strong> Code Complete & Pushed to Git<br>
+            <strong>🚀 Dev Server:</strong> Running at <a href="http://localhost:3000" target="_blank" style="color: white; text-decoration: underline;">http://localhost:3000</a>
+        </div>
+
+        <div class="critical">
+            <strong>⚠️ CRITICAL:</strong> You must run <code>supabase_auth_setup.sql</code> in Supabase before authentication will work!
+        </div>
+
+        <h2>📋 Pre-Testing Setup</h2>
+        <ul class="checklist">
+            <li>
+                <input type="checkbox" id="sql-chat">
+                <label for="sql-chat">
+                    ✅ Run <code>supabase_chat_setup.sql</code> in Supabase
+                    <span class="status ready">DONE</span>
+                </label>
+            </li>
+            <li>
+                <input type="checkbox" id="sql-auth">
+                <label for="sql-auth">
+                    Run <code>supabase_auth_setup.sql</code> in Supabase
+                    <span class="status pending">PENDING</span>
+                </label>
+            </li>
+            <li>
+                <input type="checkbox" id="email-config">
+                <label for="email-config">
+                    Configure email settings in Supabase (Site URL, Redirect URLs)
+                    <span class="status pending">PENDING</span>
+                </label>
+            </li>
+        </ul>
+
+        <h2>🧪 Test Flow</h2>
+        
+        <div style="margin: 20px 0;">
+            <a href="http://localhost:3000/register" target="_blank" class="btn">1. Test Registration →</a>
+            <a href="http://localhost:3000/login" target="_blank" class="btn">2. Test Login →</a>
+            <a href="http://localhost:3000/account" target="_blank" class="btn">3. Test Account →</a>
+            <a href="http://localhost:3000/forgot-password" target="_blank" class="btn">4. Test Password Reset →</a>
+        </div>
+
+        <h3>1. Registration Flow</h3>
+        <ul class="checklist">
+            <li>
+                <input type="checkbox" id="reg-1">
+                <label for="reg-1">
+                    Open <a href="http://localhost:3000/register" target="_blank" class="link">Registration Page</a>
+                </label>
+            </li>
+            <li>
+                <input type="checkbox" id="reg-2">
+                <label for="reg-2">Fill in form with real email (Name, Email, Password)</label>
+            </li>
+            <li>
+                <input type="checkbox" id="reg-3">
+                <label for="reg-3">Click "Create Account"</label>
+            </li>
+            <li>
+                <input type="checkbox" id="reg-4">
+                <label for="reg-4">Check email inbox for verification link</label>
+            </li>
+            <li>
+                <input type="checkbox" id="reg-5">
+                <label for="reg-5">Click verification link in email</label>
+            </li>
+            <li>
+                <input type="checkbox" id="reg-6">
+                <label for="reg-6">Verify redirect to login page with success message</label>
+            </li>
+        </ul>
+
+        <h3>2. Login Flow</h3>
+        <ul class="checklist">
+            <li>
+                <input type="checkbox" id="login-1">
+                <label for="login-1">
+                    Open <a href="http://localhost:3000/login" target="_blank" class="link">Login Page</a>
+                </label>
+            </li>
+            <li>
+                <input type="checkbox" id="login-2">
+                <label for="login-2">Enter email and password from registration</label>
+            </li>
+            <li>
+                <input type="checkbox" id="login-3">
+                <label for="login-3">Click "Sign In"</label>
+            </li>
+            <li>
+                <input type="checkbox" id="login-4">
+                <label for="login-4">Verify redirect to <code>/account</code> page</label>
+            </li>
+            <li>
+                <input type="checkbox" id="login-5">
+                <label for="login-5">Verify user name and email displayed correctly</label>
+            </li>
+        </ul>
+
+        <h3>3. Account Management</h3>
+        <ul class="checklist">
+            <li>
+                <input type="checkbox" id="account-1">
+                <label for="account-1">
+                    Open <a href="http://localhost:3000/account" target="_blank" class="link">Account Page</a>
+                </label>
+            </li>
+            <li>
+                <input type="checkbox" id="account-2">
+                <label for="account-2">Click "Edit Profile" button</label>
+            </li>
+            <li>
+                <input type="checkbox" id="account-3">
+                <label for="account-3">Update name or add phone number</label>
+            </li>
+            <li>
+                <input type="checkbox" id="account-4">
+                <label for="account-4">Click "Save Changes"</label>
+            </li>
+            <li>
+                <input type="checkbox" id="account-5">
+                <label for="account-5">Verify success message appears</label>
+            </li>
+            <li>
+                <input type="checkbox" id="account-6">
+                <label for="account-6">Refresh page and verify changes persisted</label>
+            </li>
+            <li>
+                <input type="checkbox" id="account-7">
+                <label for="account-7">Click "Address" tab</label>
+            </li>
+            <li>
+                <input type="checkbox" id="account-8">
+                <label for="account-8">Click "Edit Address" and fill in fields</label>
+            </li>
+            <li>
+                <input type="checkbox" id="account-9">
+                <label for="account-9">Save and verify address persists</label>
+            </li>
+        </ul>
+
+        <h3>4. Password Reset</h3>
+        <ul class="checklist">
+            <li>
+                <input type="checkbox" id="reset-1">
+                <label for="reset-1">
+                    Open <a href="http://localhost:3000/forgot-password" target="_blank" class="link">Forgot Password</a>
+                </label>
+            </li>
+            <li>
+                <input type="checkbox" id="reset-2">
+                <label for="reset-2">Enter your email address</label>
+            </li>
+            <li>
+                <input type="checkbox" id="reset-3">
+                <label for="reset-3">Click "Send Reset Link"</label>
+            </li>
+            <li>
+                <input type="checkbox" id="reset-4">
+                <label for="reset-4">Check email for password reset link</label>
+            </li>
+            <li>
+                <input type="checkbox" id="reset-5">
+                <label for="reset-5">Click reset link (opens /reset-password)</label>
+            </li>
+            <li>
+                <input type="checkbox" id="reset-6">
+                <label for="reset-6">Enter new password (min 6 characters)</label>
+            </li>
+            <li>
+                <input type="checkbox" id="reset-7">
+                <label for="reset-7">Confirm new password</label>
+            </li>
+            <li>
+                <input type="checkbox" id="reset-8">
+                <label for="reset-8">Click "Reset Password"</label>
+            </li>
+            <li>
+                <input type="checkbox" id="reset-9">
+                <label for="reset-9">Verify success and redirect to login</label>
+            </li>
+            <li>
+                <input type="checkbox" id="reset-10">
+                <label for="reset-10">Login with new password</label>
+            </li>
+        </ul>
+
+        <h3>5. Protected Routes</h3>
+        <ul class="checklist">
+            <li>
+                <input type="checkbox" id="protected-1">
+                <label for="protected-1">Logout (or use incognito window)</label>
+            </li>
+            <li>
+                <input type="checkbox" id="protected-2">
+                <label for="protected-2">
+                    Try accessing <a href="http://localhost:3000/account" target="_blank" class="link">/account</a>
+                </label>
+            </li>
+            <li>
+                <input type="checkbox" id="protected-3">
+                <label for="protected-3">Verify redirect to /login?redirect=/account</label>
+            </li>
+            <li>
+                <input type="checkbox" id="protected-4">
+                <label for="protected-4">Login successfully</label>
+            </li>
+            <li>
+                <input type="checkbox" id="protected-5">
+                <label for="protected-5">Verify redirect back to /account page</label>
+            </li>
+        </ul>
+
+        <h2>📚 Documentation</h2>
+        <ul>
+            <li>📄 <strong>Setup Guide:</strong> <code>AUTH_SETUP_GUIDE.md</code></li>
+            <li>💾 <strong>SQL Script:</strong> <code>supabase_auth_setup.sql</code></li>
+            <li>📋 <strong>Implementation Plan:</strong> See artifacts</li>
+        </ul>
+
+        <h2>🎯 Quick Links</h2>
+        <div style="margin: 20px 0;">
+            <a href="https://supabase.com/dashboard" target="_blank" class="btn btn-success">Open Supabase Dashboard</a>
+            <a href="http://localhost:3000" target="_blank" class="btn">Open Dev Site</a>
+        </div>
+
+        <div class="code">
+            <strong>Supabase Project:</strong> mrfxtdsilzywqhyxzvfq<br>
+            <strong>Local URL:</strong> http://localhost:3000<br>
+            <strong>Status:</strong> Ready for testing (after SQL setup)
+        </div>
+    </div>
+
+    <script>
+        // Save checkbox state to localStorage
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            // Load saved state
+            const saved = localStorage.getItem(checkbox.id);
+            if (saved === 'true') {
+                checkbox.checked = true;
+            }
+
+            // Save on change
+            checkbox.addEventListener('change', () => {
+                localStorage.setItem(checkbox.id, checkbox.checked);
+            });
+        });
+    </script>
+</body>
+</html>
