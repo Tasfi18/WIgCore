@@ -18,7 +18,7 @@ This guide will help you set up complete customer authentication for your Wig St
 ### Step 1: Create Database Tables (REQUIRED)
 
 1. **Open Supabase Dashboard**: https://supabase.com/dashboard
-2. Navigate to your project: `mrfxtdsilzywqhyxzvfq`
+2. Navigate to your project: `<your-project-ref>`
 3. Go to **SQL Editor** (left sidebar)
 4. Click **"New Query"**
 5. Open the file `supabase_auth_setup.sql` in your project directory

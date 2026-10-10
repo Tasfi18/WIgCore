@@ -12,17 +12,17 @@ ADD COLUMN IF NOT EXISTS role TEXT DEFAULT 'customer' CHECK (role IN ('customer'
 -- You need to do this in Supabase Dashboard:
 -- 1. Go to Authentication → Users
 -- 2. Click "Add User"
--- 3. Email: admin@admin.com
--- 4. Password: admin
+-- 3. Email: admin@example.com
+-- 4. Password: choose a strong, unique password
 -- 5. Auto-confirm user: YES (enable this)
 -- 6. Click "Create User"
 
 -- Step 3: After creating the admin user, get their UUID and update their role
 -- Replace 'USER_ID_HERE' with the actual UUID from Supabase Auth
--- UPDATE profiles SET role = 'admin' WHERE email = 'admin@admin.com';
+-- UPDATE profiles SET role = 'admin' WHERE email = 'admin@example.com';
 
 -- Step 4: You can also make your existing account an admin
-UPDATE profiles SET role = 'admin' WHERE email = 'muntakim880@gmail.com';
+UPDATE profiles SET role = 'admin' WHERE email = 'your-email@example.com';
 
 -- Step 5: Verify admin users
 SELECT id, email, full_name, role, created_at

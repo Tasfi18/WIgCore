@@ -5,8 +5,8 @@
 Your admin panel now uses **Supabase authentication** with role-based access control.
 
 ### Admin Credentials
-- **Email**: `admin@admin.com`
-- **Password**: `admin`
+- **Email**: `admin@example.com`
+- **Password**: a strong password of your choice (never `admin`)
 - **Role**: `admin` (stored in Supabase `profiles` table)
 
 ---
@@ -21,7 +21,7 @@ Your admin panel now uses **Supabase authentication** with role-based access con
 
 This will:
 - Add `role` column to `profiles` table
-- Set your account (`muntakim880@gmail.com`) as admin
+- Set your account (`your-email@example.com`) as admin
 
 ---
 
@@ -31,8 +31,8 @@ This will:
 
 1. Go to: **Authentication** → **Users** → **Add User**
 2. Fill in:
-   - **Email**: `admin@admin.com`
-   - **Password**: `admin`
+   - **Email**: `admin@example.com`
+   - **Password**: a strong password of your choice (never `admin`)
    - **Auto Confirm User**: ✅ YES (Enable this!)
 3. Click **"Create User"**
 4. The user will automatically get a profile with role `customer`
@@ -43,8 +43,8 @@ This will:
 1. Go to: `http://localhost:3000/register` (or your production URL)
 2. Register with:
    - **Full Name**: Admin
-   - **Email**: `admin@admin.com`
-   - **Password**: `admin`
+   - **Email**: `admin@example.com`
+   - **Password**: a strong password of your choice (never `admin`)
 3. Click verification link in email
 4. Update role in database - see Step 3
 
@@ -60,7 +60,7 @@ After creating the user, you need to set their role to `admin`:
 ```sql
 UPDATE profiles 
 SET role = 'admin' 
-WHERE email = 'admin@admin.com';
+WHERE email = 'admin@example.com';
 ```
 
 3. Verify it worked:
@@ -71,7 +71,7 @@ FROM profiles
 WHERE role = 'admin';
 ```
 
-You should see `admin@admin.com` with role `admin`.
+You should see `admin@example.com` with role `admin`.
 
 ---
 
@@ -81,8 +81,8 @@ You should see `admin@admin.com` with role `admin`.
 
 1. Go to: **`/admin/login`** (or `/admin` - it will redirect)
 2. Enter:
-   - **Email**: `admin@admin.com` (or just type `admin`)
-   - **Password**: `admin`
+   - **Email**: `admin@example.com` 
+   - **Password**: a strong password of your choice (never `admin`)
 3. Click **"Sign In"**
 4. You should be redirected to `/admin` dashboard
 
@@ -168,10 +168,10 @@ After deploying to Vercel:
 
 ```sql
 -- Check user's role
-SELECT email, role FROM profiles WHERE email = 'admin@admin.com';
+SELECT email, role FROM profiles WHERE email = 'admin@example.com';
 
 -- Set role to admin
-UPDATE profiles SET role = 'admin' WHERE email = 'admin@admin.com';
+UPDATE profiles SET role = 'admin' WHERE email = 'admin@example.com';
 ```
 
 ### Can't login / "Email not confirmed"
@@ -202,7 +202,7 @@ UPDATE profiles SET role = 'admin' WHERE email = 'admin@admin.com';
 | `/access-denied` | Shown when non-admin tries to access admin routes |
 
 **Default Admin Credentials:**
-- Email: `admin@admin.com`
-- Password: `admin`
+- Email: `admin@example.com`
+- Password: the strong password you chose
 
 ✅ **Setup complete!** Your admin panel is now secured with Supabase authentication.

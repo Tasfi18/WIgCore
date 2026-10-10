@@ -9,8 +9,8 @@ The "Start Chat" button is not working because the required database tables have
 
 1. **Open Supabase Dashboard**
    - Go to: https://supabase.com/dashboard
-   - Sign in to your account (wigcoreofficial)
-   - Open your project: `mrfxtdsilzywqhyxzvfq`
+   - Sign in to your account 
+   - Open your project: `<your-project-ref>`
 
 2. **Run the SQL Script**
    - Click on "SQL Editor" in the left sidebar
